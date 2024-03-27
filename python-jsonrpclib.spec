@@ -1,10 +1,8 @@
-%global dist_raw %(%{__grep} -oP "release \\K[0-9]+\\.[0-9]+" /etc/system-release | tr -d ".")
-
 %global pkgname jsonrpclib
 
 Name:      python-%{pkgname}
 Version:   0.4.0
-Release:   CROC2%{?dist}
+Release:   CROC3%{?dist}
 Summary:   JSON-RPC v2.0 client library for Python
 License:   ASL 2.0
 URL:       http://github.com/tcalmant/jsonrpclib/
