@@ -2,7 +2,7 @@
 
 Name:      python-%{pkgname}
 Version:   0.4.0
-Release:   ROCKIT4%{?dist}
+Release:   ROCKIT5%{?dist}
 Summary:   JSON-RPC v2.0 client library for Python
 License:   ASL 2.0
 URL:       http://github.com/tcalmant/jsonrpclib/
@@ -20,6 +20,10 @@ remote services.\
 %package -n python%{python3_pkgversion}-%{pkgname}
 Summary: %summary
 BuildRequires:  python%{python3_pkgversion}
+%if 0%{?rhel} && 0%{?rhel} >= 10
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  python%{python3_pkgversion}-setuptools
+%endif
 
 %description -n python%{python3_pkgversion}-%{pkgname} %_description
 
@@ -42,6 +46,9 @@ rm -rf %{buildroot}
 %{python3_sitelib}/*
 
 %changelog
+* Tue Aug 11 2026 Grigorii Kulagin <grkulagin@k2.cloud> - 0.4.0-ROCKIT5
+- Add explicit setuptools/devel BuildRequires (no distutils in Python 3.12+)
+
 * Mon Jan 16 2023 Ivan Konov <ikonov@croc.ru> - 0.4.0-2
 - Build for rhel8 (without python2)
 - Remove py2 support
